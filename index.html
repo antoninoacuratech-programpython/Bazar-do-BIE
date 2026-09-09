@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Bazar do Bié — Compre e venda no coração do Bié</title>
+<meta name="description" content="Bazar do Bié — o seu bazar online, com tudo o que precisa.">
+<meta name="theme-color" content="#F7B500">
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<!-- ===================================================================
+     ÍCONES (sprite SVG, usado com <use href="#i-nome">)
+     =================================================================== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-carrinho" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></symbol>
+  <symbol id="i-inicio" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V21H3z"/><path d="M9 21v-6h6v6"/></symbol>
+  <symbol id="i-grelha" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+  <symbol id="i-coracao" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/></symbol>
+  <symbol id="i-utilizador" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+  <symbol id="i-pesquisa" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></symbol>
+  <symbol id="i-voltar" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></symbol>
+  <symbol id="i-seta" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></symbol>
+  <symbol id="i-sino" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></symbol>
+  <symbol id="i-definicoes" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></symbol>
+  <symbol id="i-partilhar" viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v13"/></symbol>
+  <symbol id="i-mais" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-menos" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+  <symbol id="i-lixo" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-camiao" viewBox="0 0 24 24"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></symbol>
+  <symbol id="i-cartao" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></symbol>
+  <symbol id="i-telemovel" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></symbol>
+  <symbol id="i-banco" viewBox="0 0 24 24"><path d="M3 9l9-6 9 6"/><path d="M4 9h16v2H4z"/><path d="M6 11v7M10 11v7M14 11v7M18 11v7"/><path d="M3 21h18"/></symbol>
+  <symbol id="i-dinheiro" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M6 12h.01M18 12h.01"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></symbol>
+  <symbol id="i-estrela" viewBox="0 0 24 24"><polygon points="12 2 15.1 8.3 22 9.2 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.2 8.9 8.3"/></symbol>
+  <symbol id="i-camara" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></symbol>
+  <symbol id="i-caixa" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4a2 2 0 0 0 1-1.7z"/><path d="M3.3 7l8.7 5 8.7-5"/><path d="M12 22V12"/></symbol>
+  <symbol id="i-megafone" viewBox="0 0 24 24"><path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6l-5 4H4a1 1 0 0 0-1 1z"/><path d="M15 9a4 4 0 0 1 0 6"/><path d="M18 6a8 8 0 0 1 0 12"/></symbol>
+  <symbol id="i-escudo" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-loja" viewBox="0 0 24 24"><path d="M3 9l1.5-5h15L21 9"/><path d="M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/><path d="M5 11v9h14v-9"/><path d="M10 20v-6h4v6"/></symbol>
+  <symbol id="i-ajuda" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></symbol>
+  <symbol id="i-carteira" viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 3H6a2 2 0 0 0-2 2v2"/><circle cx="17" cy="15" r="1.2"/></symbol>
+  <symbol id="i-relogio" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-cadeado" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+  <symbol id="i-utilizadores" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+  <symbol id="i-chamar" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-lista" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3 6h.01M3 12h.01M3 18h.01"/></symbol>
+  <symbol id="i-tv" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="15" rx="2"/><path d="M17 2l-5 5-5-5"/></symbol>
+  <symbol id="i-auscultadores" viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></symbol>
+  <symbol id="i-tenis" viewBox="0 0 24 24"><path d="M2 17.5c0-3 3-4.5 6.5-5.5L11 7l3 2.5 4 1c2.5.7 4 2.5 4 6v1H2z"/><path d="M2 20h20"/><path d="M11 12l1.5 1.5M13.5 10.5l1.5 1.5"/></symbol>
+  <symbol id="i-relogio-pulso" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5.5"/><path d="M12 9.5V12l1.5 1.5"/><path d="M16.5 7.3l-.6-3.6A2 2 0 0 0 14 2h-4a2 2 0 0 0-2 1.7L7.5 7.3"/><path d="M7.5 16.7l.6 3.6A2 2 0 0 0 10 22h4a2 2 0 0 0 2-1.7l.5-3.6"/></symbol>
+  <symbol id="i-portatil" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20"/></symbol>
+  <symbol id="i-roupa" viewBox="0 0 24 24"><path d="M20.4 4.5 16 3l-4 3-4-3-4.4 1.5L1 9l3 1.5V21h16V10.5L23 9z"/></symbol>
+  <symbol id="i-sofa" viewBox="0 0 24 24"><path d="M4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3"/><path d="M2 13a2 2 0 0 1 4 0v3h12v-3a2 2 0 0 1 4 0v6H2z"/><path d="M6 19v2M18 19v2"/></symbol>
+  <symbol id="i-brilho" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 17l.8 2.2 2.2.8-2.2.8L19 23l-.8-2.2-2.2-.8 2.2-.8z"/></symbol>
+  <symbol id="i-talheres" viewBox="0 0 24 24"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></symbol>
+  <symbol id="i-bola" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 0 20"/><path d="M12 2a15 15 0 0 0 0 20"/></symbol>
+  <symbol id="i-carro" viewBox="0 0 24 24"><path d="M5 17H3v-6l2-5h14l2 5v6h-2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M5 11h14"/></symbol>
+  <symbol id="i-pontos" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="19" cy="12" r="1.6" fill="currentColor"/></symbol>
+  <symbol id="i-editar" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.1 2.1 0 0 1 3 3L12 15l-4 1 1-4z"/></symbol>
+  <symbol id="i-saco" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></symbol>
+  <symbol id="i-imagem" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></symbol>
+  <symbol id="i-armazenamento" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 12h20"/><path d="M6 8h.01M6 16h.01"/></symbol>
+  <symbol id="i-ecra" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></symbol>
+  <symbol id="i-bateria" viewBox="0 0 24 24"><rect x="2" y="7" width="17" height="10" rx="2"/><path d="M22 11v2"/><path d="M6 10v4M10 10v4"/></symbol>
+  <symbol id="i-crescer" viewBox="0 0 24 24"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></symbol>
+  <symbol id="i-sair" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></symbol>
+</svg>
+
+<div class="telemovel" id="app">
+
+<!-- ===================================================================
+     1. SPLASH
+     =================================================================== -->
+<section class="ecra activo" id="splash">
+  <div class="textura" aria-hidden="true"></div>
+  <div class="estado"><span>9:41</span><span class="lado"><span class="sinal"><i></i><i></i><i></i><i></i></span><span class="bateria"></span></span></div>
+  <div class="logo">
+    <svg viewBox="0 0 96 96" aria-hidden="true"><use href="#logo-carrinho"/></svg>
+    <span class="marca">Bazar do Bié</span>
+  </div>
+  <p class="lema">Compre e venda no coração do Bié!</p>
+  <div class="carregar"><span class="girar"></span>A carregar…</div>
+</section>
+
+<!-- ===================================================================
+     2. BOAS-VINDAS
+     =================================================================== -->
+<section class="ecra" id="boasvindas">
+  <div class="estado"><span>9:41</span><span class="lado"><span class="sinal"><i></i><i></i><i></i><i></i></span><span class="bateria"></span></span></div>
+  <div class="conteudo">
+    <div class="topo">
+      <div class="logo">
+        <svg viewBox="0 0 96 96" aria-hidden="true"><use href="#logo-carrinho"/></svg>
+        <span class="marca">Bazar do Bié</span>
+      </div>
+      <p>O seu bazar online,<br>com tudo o que precisa!</p>
+    </div>
+    <!-- paisagem estilizada do Cuito: céu, serras e casario -->
+    <svg class="paisagem" viewBox="0 0 390 190" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="ceu" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#BFE0F5"/><stop offset="1" stop-color="#EAF4FA"/></linearGradient>
+      </defs>
+      <rect width="390" height="190" fill="url(#ceu)"/>
+      <path d="M0 105 C40 80 70 70 110 88 S180 60 230 84 300 70 340 90 380 96 390 92 V190 H0z" fill="#8FB59C"/>
+      <path d="M0 125 C50 110 90 118 130 112 S210 100 260 116 330 108 390 118 V190 H0z" fill="#6E9A7B"/>
+      <g fill="#E8D9C4">
+        <rect x="24" y="140" width="34" height="30"/><rect x="66" y="132" width="28" height="38"/><rect x="104" y="146" width="40" height="24"/>
+        <rect x="156" y="136" width="26" height="34"/><rect x="190" y="148" width="44" height="22"/><rect x="244" y="130" width="30" height="40"/>
+        <rect x="284" y="144" width="38" height="26"/><rect x="330" y="138" width="30" height="32"/>
+      </g>
+      <g fill="#C96A3B">
+        <path d="M22 140h38l-4-8H26z"/><path d="M64 132h32l-4-8H68z"/><path d="M102 146h44l-4-8h-36z"/><path d="M154 136h30l-4-8h-22z"/>
+        <path d="M188 148h48l-4-8h-40z"/><path d="M242 130h34l-4-8h-26z"/><path d="M282 144h42l-4-8h-34z"/><path d="M328 138h34l-4-8h-26z"/>
+      </g>
+      <rect y="168" width="390" height="22" fill="#B98B5E"/>
+      <g fill="#3E7A4E"><circle cx="14" cy="164" r="9"/><circle cx="150" cy="166" r="8"/><circle cx="238" cy="163" r="10"/><circle cx="376" cy="165" r="9"/></g>
+    </svg>
+    <div class="accoes">
+      <button class="btn amarelo" data-ir="inicio">Entrar</button>
+      <button class="btn contorno" data-ir="criarconta">Criar conta</button>
+    </div>
+    <div class="convidado"><button class="ligacao" data-ir="inicio">Continuar como convidado</button></div>
+  </div>
+</section>
+
+<!-- ===================================================================
+     3. INÍCIO
+     =================================================================== -->
+<section class="ecra" id="inicio">
+  <div class="cabecalho-escuro">
+    <div class="estado"><span>9:41</span><span class="lado"><span class="sinal"><i></i><i></i><i></i><i></i></span><span class="bateria"></span></span></div>
+    <div class="linha-marca">
+      <div class="logo mini"><svg viewBox="0 0 96 96" aria-hidden="true"><use href="#logo-carrinho"/></svg><span class="marca">Bazar do Bié</span></div>
+      <button class="accao" data-ir="notificacoes" aria-label="Notificações"><svg class="ic"><use href="#i-sino"/></svg></button>
+      <button class="accao" data-ir="perfil" aria-label="Definições"><svg class="ic"><use href="#i-definicoes"/></svg></button>
+    </div>
+    <div class="local"><svg class="ic p"><use href="#i-pin"/></svg> Bié, Angola <svg class="ic p" style="width:12px;height:12px"><use href="#i-seta" transform="rotate(90 12 12)"/></svg></div>
+    <label class="pesquisa"><svg class="ic"><use href="#i-pesquisa"/></svg><input type="search" id="pesquisa-inicio" placeholder="O que está à procura?"></label>
+  </div>
+
+  <div class="conteudo com-nav">
+    <div class="faixa">
+      <h2>Apoie o comércio local<br>Compre no Bazar do Bié!</h2>
+      <p>Produtos de vendedores da nossa província.</p>
+      <button class="btn escuro" data-ir="lista" data-cat="todos">Ver ofertas</button>
+      <svg class="ilustracao" viewBox="0 0 150 130" aria-hidden="true">
+        <circle cx="100" cy="80" r="62" fill="rgba(255,255,255,.28)"/>
+        <g stroke="#17181C" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(48 36) scale(2.6)">
+          <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+        </g>
+        <rect x="72" y="46" width="16" height="16" rx="3" fill="#fff"/><rect x="92" y="40" width="16" height="22" rx="3" fill="#fff"/>
+      </svg>
+    </div>
+
+    <div class="categorias-grelha" id="categorias-inicio"></div>
+
+    <div class="seccao-titulo"><h2>Ofertas em destaque</h2><button class="ligacao pura" data-ir="lista" data-cat="todos">Ver todos</button></div>
+    <div class="carrossel" id="destaques"></div>
+  </div>
+  <nav class="nav-inferior" data-nav="cliente"></nav>
+</section>
+
+<!-- ===================================================================
+     4. CATEGORIAS
+     =================================================================== -->
+<section class="ecra" id="categorias">
+  <div class="estado"><span>9:41</span><span class="lado"><span class="sinal"><i></i><i></i><i></i><i></i></span><span class="bateria"></span></span></div>
+  <header class="cabecalho"><h1>Categorias</h1></header>
+  <div class="conteudo com-nav">
+    <div style="padding:0 16px 8px"><label class="pesquisa"><svg class="ic"><use href="#i-pesquisa"/></svg><input type="search" id="pesquisa-categorias" placeholder="Procurar categorias…"></label></div>
+    <div class="lista-categorias" id="lista-categorias"></div>
+  </div>
+  <nav class="nav-inferior" data-nav="cliente"></nav>
+</section>
+
+<!-- ===================================================================
+     5. LISTA DE PRODUTOS (categoria / pesquisa / favoritos)
+     =================================================================== -->
+<section class="ecra" id="lista">
+  <div class="estado"><span>9:41</span><span class="lado"><span class="sinal"><i></i><i></i><i></i><i></i></span><span class="bateria"></span></span></div>
+  <header class="cabecalho">
+    <button class="voltar" data-voltar aria-label="Voltar"><svg class="ic"><use href="#i-voltar"/></svg></button>
+    <h1 class="centro" id="lista-titulo">Eletrónicos</h1>
+    <button class="accao" data-ir="inicio" aria-label="Pesquisar"><svg class="ic"><use href="#i-pesquisa"/></svg></button>
+  </header>
+  <div class="filtros" id="lista-filtros"></div>
+  <div class="conteudo com-nav">
+    <div class="grelha-produtos" id="lista-produtos"></div>
+  </div>
+  <nav class="nav-inferior" data-nav="cliente"></nav>
+</section>
+
+<!-- ===================================================================
+     6. DETALHE DO PRODUTO
+     =================================================================== -->
+<section class="ecra" id="produto">
+  <div class="estado"><span>9:41</span><span class="lado"><span class="sinal"><i></i><i></i><i></i><i></i></span><span class="bateria"></span></span></div>
+  <header class="cabecalho">
+    <button class="voltar" data-voltar aria-label="Voltar"><svg class="ic"><use href="#i-voltar"/></svg></button>
+    <h1></h1>
+    <button class="accao" id="produto-favorito" aria-label="Guardar nos favoritos"><svg class="ic"><use href="#i-coracao"/></svg></button>
+    <button class="accao" aria-label="Partilhar" data-aviso="Ligação copiada"><svg class="ic"><use href="#i-partilhar"/></svg></button>
+  </header>
+  <div class="conteudo">
+    <div class="imagem-grande" id="produto-imagem"></div>
+    <div class="info">
+      <h2 id="produto-nome"></h2>
+      <div class="preco" id="produto-preco"></div>
+      <div class="meta">
+        <svg class="ic p estrela cheio"><use href="#i-estrela"/></svg>
+        <span id="produto-avaliacao"></span>
+        <span class="etiqueta verde" style="margin-left:auto">Em stock</span>
+      </div>
+    </div>
+    <ul class="caracteristicas" id="produto-caracteristicas"></ul>
+    <button class="vendedor" data-ir="loja">
+      <span class="avatar foto">LJ</span>
+      <div class="txt"><strong>Loja do João</strong><span>Vendedor verificado · Bié, Angola</span></div>
+      <span class="ligacao pura">Ver loja</span>
+    </button>
+  </div>
+  <div class="rodape-accoes">
+    <button class="btn amarelo" id="produto-adicionar"><svg class="ic p"><use href="#i-carrinho"/></svg> Adicionar ao carrinho</button>
+    <button class="btn contorno" id="produto-comprar">Comprar agora</button>
+  </div>
+</section>
+
+<!-- ===================================================================
+     7. CARRINHO
+     =================================================================== -->
+<section class="ecra" id="carrinho">
+  <div class="estado"><span>9:41</span><span class="lado"><span class="sinal"><i></i><i></i><i></i><i></i></span><span class="bateria"></span></span></div>
+  <header class="cabecalho"><h1>Carrinho</h1></header>
+  <div class="conteudo com-nav">
+    <div id="carrinho-itens"></div>
+    <div class="resumo" id="carrinho-resumo"></div>
+    <div style="padding:16px 16px 8px"><button class="btn amarelo" id="carrinho-finalizar" data-ir="checkout">Finalizar compra</button></div>
+  </div>
+  <nav class="nav-inferior" data-nav="cliente"></nav>
+</section>
+
+<!-- ===================================================================
+     8. FINALIZAR COMPRA
+     =================================================================== -->
+<section class="ecra" id="checkout">
+  <div class="estado"><span>9:41</span><span class="lado"><span class="sinal"><i></i><i></i><i></i><i></i></span><span class="bateria"></span></span></div>
+  <header class="cabecalho">
+    <button class="voltar" data-voltar aria-label="Voltar"><svg class="ic"><use href="#i-voltar"/></svg></button>
+    <h1 class="centro">Finalizar compra</h1><span class="espaco"></span>
+  </header>
+  <div class="conteudo">
+    <div class="bloco">
+      <h3>Endereço de entrega</h3>
+      <div class="cartao endereco">
+        <svg class="ic"><use href="#i-pin"/></svg>
+        <div class="txt">Rua Principal, 123<br>Bié, Angola</div>
+        <button class="ligacao pura" data-aviso="Edição de endereço em breve">Alterar</button>
+      </div>
+    </div>
+    <div class="bloco">
+      <h3>Método de entrega</h3>
+      <div class="cartao" id="opcoes-entrega">
+        <div class="opcao activa" data-valor="300000"><span class="radio"></span><div class="txt">Entrega normal<span>2 a 3 dias</span></div><span class="valor">Kz 300.000</span></div>
+        <div class="opcao" data-valor="500000"><span class="radio"></span><div class="txt">Entrega expressa<span>24 horas</span></div><span class="valor">Kz 500.000</span></div>
+      </div>
+    </div>
+    <div class="bloco">
+      <h3>Forma de pagamento</h3>
+      <div class="cartao" id="opcoes-pagamento">
+        <div class="opcao activa"><span class="radio"></span><svg class="ic"><use href="#i-cartao"/></svg><div class="txt">Cartão de crédito/débito</div></div>
+        <div class="opcao"><span class="radio"></span><svg class="ic"><use href="#i-telemovel"/></svg><div class="txt">M-Pesa</div></div>
+        <div class="opcao"><span class="radio"></span><svg class="ic"><use href="#i-banco"/></svg><div class="txt">Transferência bancária</div></div>
+        <div class="opcao"><span class="radio"></span><svg class="ic"><use href="#i-dinheiro"/></svg><div class="txt">Pagamento na entrega</div></div>
+      </div>
+    </div>
+    <div class="bloco" style="padding-top:14px">
+      <div class="resumo" style="padding:0" id="checkout-resumo"></div>
+    </div>
+  </div>
+  <div class="rodape-accoes"><button class="btn amarelo" id="pagar">Pagar agora</button></div>
+</section>
+
+<!-- ===================================================================
+     9. ACOMPANHAR PEDIDO
+     =================================================================== -->
+<section class="ecra cinza" id="pedido">
+  <div class="estado"><span>9:41</span><span class="lado"><span class="sinal"><i></i><i></i><i></i><i></i></span><span class="bateria"></span></span></div>
+  <header class="cabecalho">
+    <button class="voltar" data-voltar aria-label="Voltar"><svg class="ic"><use href="#i-voltar"/></svg></button>
+    <h1 class="centro">Acompanhar pedido</h1><span class="espaco"></span>
+  </header>
+  <div class="conteudo com-nav">
+    <div class="bloco">
+      <div class="cartao cabecalho-pedido">
+        <div><strong>Pedido #BZD1258</strong><span class="sub">Realizado em 20/08/2025 · 10:24</span></div>
+        <span class="etiqueta verde">Em andamento</span>
+      </div>
+    </div>
+    <ol class="linha-tempo">
+      <li class="feito"><span class="ponto"><svg class="ic"><use href="#i-check"/></svg></span><strong>Pedido confirmado</strong><span>20/08/2025 · 10:24</span></li>
+      <li class="feito"><span class="ponto"><svg class="ic"><use href="#i-check"/></svg></span><strong>Pagamento aprovado</strong><span>20/08/2025 · 10:27</span></li>
+      <li class="feito"><span class="ponto"><svg class="ic"><use href="#i-check"/></svg></span><strong>Preparação do produto</strong><span>20/08/2025 · 11:15</span></li>
+      <li class="actual"><span class="ponto"></span><strong>Em trânsito</strong><span>21/08/2025 · 14:30</span></li>
+      <li><span class="ponto"></span><strong>Entrega prevista</strong><span>22/08/2025 · 09:00</span></li>
+    </ol>
+    <div class="cartao aviso-entrega">
+      <span class="pastilha"><svg class="ic"><use href="#i-camiao"/></svg></span>
+      <div><strong>O seu pedido está a caminho!</strong><span>O entregador já saiu para a sua região.</span></div>
+    </div>
+  </div>
+  <nav class="nav-inferior" data-nav="cliente"></nav>
+</section>
+
+<!-- ===================================================================
+     10. PAINEL DO COMERCIANTE
+     =================================================================== -->
+<section class="ecra cinza" id="painel">
+  <div class="estado"><span>9:41</span><span class="lado"><span class="sinal"><i></i><i></i><i></i><i></i></span><span class="bateria"></span></span></div>
+  <header class="cabecalho">
+    <button class="voltar" data-ir="perfil" aria-label="Voltar"><svg class="ic"><use href="#i-voltar"/></svg></button>
+    <h1 class="centro">Painel do comerciante</h1><span class="espaco"></span>
+  </header>
+  <div class="conteudo com-nav">
+    <div class="bloco">
+      <div class="cartao">
+        <div class="loja-cabecalho">
+          <button class="avatar foto" data-ir="loja" aria-label="Ver a minha loja">LJ</button>
+          <div><strong>Loja do João</strong><span class="etiqueta azul"><svg class="ic"><use href="#i-check"/></svg>Verificada</span></div>
+        </div>
+        <div class="estatisticas">
+          <div><span>Total de vendas</span><strong>Kz 540.000</strong></div>
+          <div><span>Pedidos</span><strong>48</strong></div>
+          <div><span>Produtos</span><strong>25</strong></div>
+        </div>
+      </div>
+    </div>
+    <div class="menu-comerciante">
+      <button data-ir="meusprodutos"><span class="pastilha"><svg class="ic"><use href="#i-caixa"/></svg></span><div><strong>Gerir produtos</strong><span>Adicionar e editar produtos</span></div><svg class="ic seta" style="margin-left:auto;color:#9CA3AF"><use href="#i-seta"/></svg></button>
+      <button data-ir="pedido"><span class="pastilha"><svg class="ic"><use href="#i-lista"/></svg></span><div><strong>Meus pedidos</strong><span>Acompanhar vendas</span></div><svg class="ic seta" style="margin-left:auto;color:#9CA3AF"><use href="#i-seta"/></svg></button>
+      <button data-ir="promo"><span class="pastilha"><svg class="ic"><use href="#i-megafone"/></svg></span><div><strong>Divulgar serviços</strong><span>Anunciar o seu negócio</span></div><svg class="ic seta" style="margin-left:auto;color:#9CA3AF"><use href="#i-seta"/></svg></button>
+    </div>
+    <div class="seccao-titulo"><h2>Vendas recentes</h2><button class="ligacao pura" data-ir="pedido">Ver todos</button></div>
+    <ul class="vendas" id="vendas-recentes"></ul>
+  </div>
+  <nav class="nav-inferior quatro" data-nav="comerciante"></nav>
+</section>
+
+<!-- ===================================================================
+     11. ADICIONAR PRODUTO
+     =================================================================== -->
+<section class="ecra cinza" id="adicionar">
+  <div class="estado"><span>9:41</span><span class="lado"><span class="sinal"><i></i><i></i><i></i><i></i></span><span class="bateria"></span></span></div>
+  <header class="cabecalho">
+    <button class="voltar" data-voltar aria-label="Voltar"><svg class="ic"><use href="#i-voltar"/></svg></button>
+    <h1 class="centro">Adicionar produto</h1><span class="espaco"></span>
+  </header>
+  <div class="conteudo">
+    <div class="carregar-fotos" data-aviso="Escolha até 5 fotos do produto">
+      <span class="pastilha"><svg class="ic"><use href="#i-camara"/></svg></span>
+      <strong>Adicionar fotos</strong><span>Até 5 fotos</span>
+    </div>
+    <div class="campo"><label for="np-nome">Nome do produto</label><input id="np-nome" placeholder="Ex.: iPhone 15 128GB"><div class="erro-campo">Indique o nome do produto.</div></div>
+    <div class="campo"><label for="np-categoria">Categoria</label><select id="np-categoria" required><option value="" disabled selected>Selecione a categoria</option></select><div class="erro-campo">Escolha uma categoria.</div></div>
+    <div class="campo"><label for="np-preco">Preço (Kz)</label><input id="np-preco" inputmode="numeric" placeholder="Ex.: 1.250.000"><div class="erro-campo">Indique um preço válido.</div></div>
+    <div class="campo"><label for="np-descricao">Descrição</label><textarea id="np-descricao" placeholder="Descreva o produto…"></textarea></div>
+    <div style="padding:18px 16px 20px"><button class="btn amarelo" id="np-guardar">Guardar produto</button></div>
+  </div>
+</section>
+
+<!-- ===================================================================
+     12. MINHA LOJA
+     =================================================================== -->
+<section class="ecra" id="loja">
+  <div class="estado"><span>9:41</span><span class="lado"><span class="sinal"><i></i><i></i><i></i><i></i></span><span class="bateria"></span></span></div>
+  <header class="cabecalho">
+    <button class="voltar" data-voltar aria-label="Voltar"><svg class="ic"><use href="#i-voltar"/></svg></button>
+    <h1 class="centro">Minha loja</h1><span class="espaco"></span>
+  </header>
+  <div class="conteudo">
+    <div class="info-loja">
+      <span class="avatar grande foto">LJ</span>
+      <div><strong>Loja do João</strong><div class="sub"><svg class="ic p estrela cheio"><use href="#i-estrela"/></svg> 4.8 (120)</div><div class="sub"><svg class="ic p"><use href="#i-pin"/></svg> Bié, Angola</div></div>
+    </div>
+    <div class="botoes">
+      <button class="btn amarelo" id="seguir-loja">Seguir</button>
+      <button class="btn contorno" data-ir="lista" data-cat="todos">Ver produtos</button>
+    </div>
+    <div class="numeros">
+      <div><strong>25</strong><span>Produtos</span></div>
+      <div><strong>12</strong><span>Serviços</span></div>
+      <div><strong>4.8</strong><span>Avaliação</span></div>
+    </div>
+    <div class="sobre"><h3>Sobre a loja</h3><p>Eletrónicos, acessórios e muito mais. Entregamos em todo o Bié.</p></div>
+    <div class="sobre"><h3>Horário de funcionamento</h3><p>Seg. a sáb.: 08:00 – 18:00</p></div>
+    <div class="sobre"><h3>Formas de pagamento</h3><div class="pagamentos"><span class="pagamento visa">VISA</span><span class="pagamento mc">Mastercard</span><span class="pagamento mpesa">M-Pesa</span></div></div>
+  </div>
+  <div class="rodape-accoes duas">
+    <button class="btn contorno" data-aviso="Conversa iniciada com a Loja do João"><svg class="ic p"><use href="#i-chat"/></svg> Chat</button>
+    <button class="btn amarelo" data-aviso="A ligar para a Loja do João…"><svg class="ic p"><use href="#i-chamar"/></svg> Ligar</button>
+  </div>
+</section>
+
+<!-- ===================================================================
+     13. CRIAR CONTA
+     =================================================================== -->
+<section class="ecra" id="criarconta">
+  <div class="estado"><span>9:41</span><span class="lado"><span class="sinal"><i></i><i></i><i></i><i></i></span><span class="bateria"></span></span></div>
+  <div class="conteudo">
+    <h2>Criar conta</h2>
+    <p class="intro">Escolha o tipo de conta</p>
+    <button class="tipo-conta" data-ir="inicio"><span class="pastilha"><svg class="ic g"><use href="#i-utilizador"/></svg></span><div><strong>Cliente</strong><span>Compre produtos e serviços</span></div></button>
+    <button class="tipo-conta" data-ir="promo"><span class="pastilha"><svg class="ic g"><use href="#i-loja"/></svg></span><div><strong>Comerciante</strong><span>Publique os seus produtos e serviços</span></div></button>
+    <div class="rodape">Já tem uma conta? <button class="ligacao pura" data-ir="inicio">Entrar</button></div>
+  </div>
+</section>
+
+<!-- ===================================================================
+     14. MEU PERFIL
+     =================================================================== -->
+<section class="ecra" id="perfil">
+  <div class="estado"><span>9:41</span><span class="lado"><span class="sinal"><i></i><i></i><i></i><i></i></span><span class="bateria"></span></span></div>
+  <header class="cabecalho">
+    <button class="voltar" data-ir="inicio" aria-label="Voltar"><svg class="ic"><use href="#i-voltar"/></svg></button>
+    <h1>Meu perfil</h1>
+  </header>
+  <div class="conteudo com-nav">
+    <div class="utilizador">
+      <span class="avatar pessoa">MS</span>
+      <div><strong>Maria Silva</strong><span>maria@email.com</span></div>
+    </div>
+    <div class="menu-lista">
+      <button data-ir="pedido"><span class="pastilha"><svg class="ic"><use href="#i-saco"/></svg></span><span class="txt">Meus pedidos</span><svg class="ic seta"><use href="#i-seta"/></svg></button>
+      <button data-ir="lista" data-cat="favoritos"><span class="pastilha"><svg class="ic"><use href="#i-coracao"/></svg></span><span class="txt">Meus favoritos</span><svg class="ic seta"><use href="#i-seta"/></svg></button>
+      <button data-ir="checkout"><span class="pastilha"><svg class="ic"><use href="#i-pin"/></svg></span><span class="txt">Endereços</span><svg class="ic seta"><use href="#i-seta"/></svg></button>
+      <button data-ir="checkout"><span class="pastilha"><svg class="ic"><use href="#i-cartao"/></svg></span><span class="txt">Formas de pagamento</span><svg class="ic seta"><use href="#i-seta"/></svg></button>
+      <button data-ir="notificacoes"><span class="pastilha"><svg class="ic"><use href="#i-sino"/></svg></span><span class="txt">Notificações</span><span class="contador-linha" id="perfil-notificacoes">2</span><svg class="ic seta"><use href="#i-seta"/></svg></button>
+      <button data-ir="painel"><span class="pastilha"><svg class="ic"><use href="#i-loja"/></svg></span><span class="txt">Painel do comerciante</span><svg class="ic seta"><use href="#i-seta"/></svg></button>
+      <button data-aviso="Centro de ajuda em breve"><span class="pastilha"><svg class="ic"><use href="#i-ajuda"/></svg></span><span class="txt">Ajuda e suporte</span><svg class="ic seta"><use href="#i-seta"/></svg></button>
+      <button data-ir="sobre"><span class="pastilha"><svg class="ic"><use href="#i-info"/></svg></span><span class="txt">Sobre o Bazar do Bié</span><svg class="ic seta"><use href="#i-seta"/></svg></button>
+      <button data-ir="boasvindas"><span class="pastilha"><svg class="ic"><use href="#i-sair"/></svg></span><span class="txt">Terminar sessão</span></button>
+    </div>
+  </div>
+  <nav class="nav-inferior" data-nav="cliente"></nav>
+</section>
+
+<!-- ===================================================================
+     15. MEUS PRODUTOS
+     =================================================================== -->
+<section class="ecra" id="meusprodutos">
+  <div class="estado"><span>9:41</span><span class="lado"><span class="sinal"><i></i><i></i><i></i><i></i></span><span class="bateria"></span></span></div>
+  <header class="cabecalho">
+    <button class="voltar" data-ir="painel" aria-label="Voltar"><svg class="ic"><use href="#i-voltar"/></svg></button>
+    <h1 class="centro">Meus produtos</h1><span class="espaco"></span>
+  </header>
+  <div class="filtros" id="meus-filtros">
+    <button class="filtro activo" data-estado="todos">Todos</button>
+    <button class="filtro" data-estado="activo">Ativos</button>
+    <button class="filtro" data-estado="inactivo">Inativos</button>
+  </div>
+  <div class="conteudo com-nav">
+    <ul class="lista-produtos" id="meus-produtos"></ul>
+  </div>
+  <button class="fab" data-ir="adicionar" aria-label="Adicionar produto"><svg class="ic g"><use href="#i-mais"/></svg></button>
+  <nav class="nav-inferior quatro" data-nav="comerciante"></nav>
+</section>
+
+<!-- ===================================================================
+     16. NOTIFICAÇÕES
+     =================================================================== -->
+<section class="ecra" id="notificacoes">
+  <div class="estado"><span>9:41</span><span class="lado"><span class="sinal"><i></i><i></i><i></i><i></i></span><span class="bateria"></span></span></div>
+  <header class="cabecalho">
+    <button class="voltar" data-voltar aria-label="Voltar"><svg class="ic"><use href="#i-voltar"/></svg></button>
+    <h1>Notificações</h1>
+    <button class="ligacao pura" id="marcar-lidas">Marcar tudo como lido</button>
+  </header>
+  <div class="conteudo">
+    <ul class="notificacoes" id="lista-notificacoes"></ul>
+  </div>
+</section>
+
+<!-- ===================================================================
+     17. SER COMERCIANTE
+     =================================================================== -->
+<section class="ecra" id="promo">
+  <div class="estado"><span>9:41</span><span class="lado"><span class="sinal"><i></i><i></i><i></i><i></i></span><span class="bateria"></span></span></div>
+  <div class="conteudo">
+    <div class="logo mini"><svg viewBox="0 0 96 96" aria-hidden="true"><use href="#logo-carrinho"/></svg><span class="marca">Bazar do Bié</span></div>
+    <h2>Mais visibilidade para o seu negócio!</h2>
+    <p>Cadastre os seus produtos, divulgue os seus serviços e alcance mais clientes.</p>
+    <svg class="ilustracao-promo" viewBox="0 0 340 240" aria-hidden="true">
+      <path d="M40 60c60-50 160-40 220 10 50 42 60 120 10 150s-160 30-220-10S-20 110 40 60z" fill="#F7B500"/>
+      <rect x="112" y="46" width="116" height="176" rx="18" fill="#17181C"/>
+      <rect x="120" y="58" width="100" height="152" rx="12" fill="#fff"/>
+      <rect x="132" y="72" width="76" height="10" rx="5" fill="#E6E8EC"/>
+      <rect x="132" y="92" width="34" height="34" rx="8" fill="#FFF4D1"/><rect x="174" y="92" width="34" height="34" rx="8" fill="#FFF4D1"/>
+      <rect x="132" y="134" width="34" height="34" rx="8" fill="#FFF4D1"/><rect x="174" y="134" width="34" height="34" rx="8" fill="#FFF4D1"/>
+      <rect x="132" y="180" width="76" height="16" rx="8" fill="#F7B500"/>
+      <g fill="#fff" stroke="#17181C" stroke-width="3">
+        <rect x="236" y="120" width="22" height="70" rx="4"/><rect x="264" y="92" width="22" height="98" rx="4"/><rect x="292" y="140" width="22" height="50" rx="4"/>
+      </g>
+      <path d="M232 100l30-26 22 12 30-40" fill="none" stroke="#17181C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="64" cy="150" r="30" fill="#fff" stroke="#17181C" stroke-width="3"/>
+      <g transform="translate(46 132) scale(1.5)" fill="none" stroke="#17181C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/></g>
+    </svg>
+    <div class="accoes">
+      <button class="btn amarelo" data-ir="painel">Ser um comerciante</button>
+      <div>Já é comerciante? <button class="ligacao pura" data-ir="painel">Entrar</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================
+     18. SOBRE
+     =================================================================== -->
+<section class="ecra" id="sobre">
+  <div class="estado"><span>9:41</span><span class="lado"><span class="sinal"><i></i><i></i><i></i><i></i></span><span class="bateria"></span></span></div>
+  <header class="cabecalho"><button class="voltar" data-voltar aria-label="Voltar"><svg class="ic"><use href="#i-voltar"/></svg></button></header>
+  <div class="conteudo">
+    <div class="logo">
+      <svg viewBox="0 0 96 96" aria-hidden="true"><use href="#logo-carrinho"/></svg>
+      <span class="marca">Bazar do Bié</span>
+    </div>
+    <p class="lema">Compre e venda no coração do Bié!</p>
+    <div class="valores">
+      <div><svg class="ic g"><use href="#i-loja"/></svg>Comércio local</div>
+      <div><svg class="ic g"><use href="#i-utilizadores"/></svg>Mais clientes</div>
+      <div><svg class="ic g"><use href="#i-escudo"/></svg>Seguro e confiável</div>
+    </div>
+    <div class="rodape"><strong>Bazar do Bié</strong>Juntos por uma economia mais forte!</div>
+  </div>
+</section>
+
+<div class="aviso" id="aviso" role="status" aria-live="polite"><svg class="ic"><use href="#i-check"/></svg><span></span></div>
+
+</div><!-- /telemovel -->
+
+<!-- logótipo: carrinho com um saco, cor herdada (currentColor) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="logo-carrinho" viewBox="0 0 96 96">
+    <g fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 18h10l9 42h44l7-30H36"/>
+    </g>
+    <circle cx="36" cy="76" r="6" fill="currentColor"/><circle cx="66" cy="76" r="6" fill="currentColor"/>
+    <path d="M52 30h18l3 12H49z" fill="currentColor"/>
+    <path d="M56 30v-4a5 5 0 0 1 10 0v4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+  </symbol>
+</svg>
+
+<script src="js/app.js"></script>
+</body>
+</html>
